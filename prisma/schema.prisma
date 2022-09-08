@@ -17,6 +17,7 @@ model Users {
 
   credentials Credentials[] 
   safeNotes   SafeNotes[]
+  cards       Cards[]
 }
 
 model Credentials {
@@ -39,4 +40,26 @@ model SafeNotes {
   userId      Int
 
   @@unique([title, userId])
+}
+
+model Cards {
+  id              Int       @id @default(autoincrement())
+  title           String  
+  cardNumber      String
+  cardholder      String
+  securityCode    String
+  expirationDate  String
+  password        String
+  isVirtual       Boolean   @default(false)
+  type            Type    
+  user            Users     @relation(fields:[userId], references: [id])
+  userId          Int
+
+  @@unique([title, userId])
+}
+
+enum Type {
+  credit
+  debit
+  creditanddebit
 }
