@@ -11,14 +11,6 @@ export async function tokenValidationMiddleware(
   next: NextFunction
 ) {
   const authorization = req.headers.authorization;
-
-  if (!authorization) {
-    throw {
-      status: 401,
-      message: "Missing authorization!",
-    };
-  }
-
   const token = authorization?.replace("Bearer ", "").trim();
 
   if (!token) {
