@@ -2,7 +2,7 @@ import express, { json } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import "express-async-errors";
-// import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
+import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware";
 
 // import cardRouter from "./routes/cardRouter.js";
 // import rechargeRouter from "./routes/rechargeRouter.js";
@@ -18,7 +18,7 @@ app.use(json());
 // app.use(rechargeRouter);
 // app.use(paymentRouter);
 
-// app.use(errorHandlerMiddleware);
+app.use(errorHandlerMiddleware);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log("Server On!"));
