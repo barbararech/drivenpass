@@ -1,15 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-
-interface Error {
-  name: string;
-  message: string;
-  stack?: string;
-  status?: number;
-  code?: string;
-}
+import * as ErrorTypes from "../types/ErrorTypes";
 
 export default async function errorHandler(
-  error: Error,
+  error: ErrorTypes.Error,
   req: Request,
   res: Response,
   next: NextFunction

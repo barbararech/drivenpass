@@ -5,8 +5,7 @@ import jwt from "jsonwebtoken";
 export async function signUp(email: string, password: string) {
   const passwordCrypt = bcrypt.hashSync(password, 10);
   const user = { email, password: passwordCrypt };
-  const actionType = "signUp";
-  const userExist = await userService.findUserByEmail(email, actionType);
+  const userExist = await userService.findUserByEmail(email);
 
   if (userExist) {
     throw { status: 409, message: "This user is already registered!" };
@@ -18,8 +17,7 @@ export async function signUp(email: string, password: string) {
 }
 
 export async function signIn(email: string, password: string) {
-  const actionType = "signIn";
-  const user = await userService.findUserByEmail(email, actionType);
+  const user = await userService.findUserByEmail(email);
 
   if (!user) {
     throw { status: 404, message: "This user isn't registered!" };

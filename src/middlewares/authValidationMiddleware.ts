@@ -1,9 +1,6 @@
 import jwt from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
-
-interface JwtPayload {
-  id: string;
-}
+import * as AuthTypes from "../types/AuthTypes";
 
 export async function tokenValidationMiddleware(
   req: Request,
@@ -23,7 +20,7 @@ export async function tokenValidationMiddleware(
   const { id } = jwt.verify(
     token,
     process.env.JWT_SECRET as string
-  ) as JwtPayload;
+  ) as AuthTypes.JwtPayload;
 
   res.locals.id = id;
   next();
