@@ -11,6 +11,6 @@ export async function signUp(req: Request, res: Response) {
 export async function signIn(req: Request, res: Response) {
   const { email, password } = req.body;
 
-//   await authService.signIn(email, password);
-  return res.sendStatus(200);
+  const token = await authService.signIn(email, password);
+  return res.status(200).send({token});
 }

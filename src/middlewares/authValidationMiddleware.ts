@@ -15,21 +15,23 @@ export async function tokenValidationMiddleware(
   if (!authorization) {
     throw {
       status: 401,
-      message: "Missing authorization header!",
+      message: "Missing authorization!",
     };
   }
 
   const token = authorization?.replace("Bearer ", "").trim();
-  const secretKey = process.env.JWT_SECRET;
 
-  if (!token || !secretKey) {
+  if (!token) {
     throw {
       status: 401,
       message: "Unauthorized!",
     };
   }
 
-  const { id } = jwt.verify(token, secretKey) as JwtPayload;
+  const { id } = jwt.verify(
+    token,
+    process.env.JWT_SECRET as string
+  ) as JwtPayload;
 
   res.locals.id = id;
   next();

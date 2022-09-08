@@ -1,13 +1,10 @@
 import * as userRepository from "../repositories/userRepository";
 
-export async function findUserByEmail(email: string) {
+export type ActionTypes = "signUp" | "signIn";
+
+export async function findUserByEmail(email: string, actionType: ActionTypes) {
   const user = await userRepository.findUserByEmail(email);
-
-  if (user) {
-    throw { status: 409, message: "This user is already registered!" };
-  }
-
-  return;
+  return user;
 }
 
 export async function insertNewUser(user: userRepository.NewUser) {
