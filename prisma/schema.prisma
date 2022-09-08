@@ -18,6 +18,7 @@ model Users {
   credentials Credentials[] 
   safeNotes   SafeNotes[]
   cards       Cards[]
+  networks    Networks[]
 }
 
 model Credentials {
@@ -62,4 +63,13 @@ enum Type {
   credit
   debit
   creditanddebit
+}
+
+model Networks {
+  id              Int       @id @default(autoincrement())
+  title           String  
+  networkName     String
+  password        String
+  user            Users     @relation(fields:[userId], references: [id])
+  userId          Int
 }
