@@ -4,9 +4,7 @@ import dotenv from "dotenv";
 import "express-async-errors";
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware";
 
-// import cardRouter from "./routes/cardRouter.js";
-// import rechargeRouter from "./routes/rechargeRouter.js";
-// import paymentRouter from "./routes/paymentRouter.js";
+import authRouter from "./routes/authRouter";
 
 dotenv.config();
 
@@ -14,9 +12,7 @@ const app = express();
 app.use(cors());
 app.use(json());
 
-// app.use(cardRouter);
-// app.use(rechargeRouter);
-// app.use(paymentRouter);
+app.use(authRouter);
 
 app.use(errorHandlerMiddleware);
 
