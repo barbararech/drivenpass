@@ -25,10 +25,10 @@ router.get(
   cardsController.viewCardById
 );
 
-// router.delete(
-//   "/cards/:id",
-//   tokenValidationMiddleware,
-//   cardsController.deleteCard
-// );
+router.delete(
+  "/cards/:id",
+  tokenValidationMiddleware,
+  cardsController.deleteCard
+);
 
 export default router;

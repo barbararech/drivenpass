@@ -48,12 +48,12 @@ export async function viewCardById(userId: number, cardId: number) {
   return card;
 }
 
-// export async function deleteCard(userId: number, cardId: number) {
-//   await cardExist(userId, cardId);
-//   await cardsRepository.deleteCard(cardId);
+export async function deleteCard(userId: number, cardId: number) {
+  await cardExist(userId, cardId);
+  await cardsRepository.deleteCard(cardId);
 
-//   return;
-// }
+  return;
+}
 
 export async function findCardByTitle(userId: number, card: INewCard) {
   const { title } = card;

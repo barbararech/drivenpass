@@ -31,14 +31,14 @@ export async function viewCardById(req: Request, res: Response) {
   return res.status(200).send(card);
 }
 
-// export async function deleteCard(req: Request, res: Response) {
-//   const userId: number = res.locals.id;
-//   const cardId: number = Number(req.params.id);
+export async function deleteCard(req: Request, res: Response) {
+  const userId: number = res.locals.id;
+  const cardId: number = Number(req.params.id);
 
-//   await cardsService.deleteCard(
-//     userId,
-//     cardId
-//   );
+  await cardsService.deleteCard(
+    userId,
+    cardId
+  );
 
-//   return res.status(200).send("Card successfully deleted!");
-// }
+  return res.status(200).send("Card successfully deleted!");
+}

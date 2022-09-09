@@ -13,10 +13,7 @@ export async function findCardByTitleAndUserId(userId: number, title: string) {
   });
 }
 
-export async function findCardByIdAndUserId(
-  userId: number,
-  cardId: number
-) {
+export async function findCardByIdAndUserId(userId: number, cardId: number) {
   return client.cards.findFirst({
     where: { id: cardId, userId },
   });
@@ -28,8 +25,8 @@ export async function findAllCards(userId: number) {
   });
 }
 
-// export async function deleteCard(id: number) {
-//   return client.cards.delete({
-//     where: { id },
-//   });
-// }
+export async function deleteCard(id: number) {
+  return client.cards.delete({
+    where: { id },
+  });
+}
