@@ -13,14 +13,14 @@ export async function findCardByTitleAndUserId(userId: number, title: string) {
   });
 }
 
-// export async function findCardByIdAndUserId(
-//   userId: number,
-//   cardId: number
-// ) {
-//   return client.cards.findFirst({
-//     where: { id: cardId, userId },
-//   });
-// }
+export async function findCardByIdAndUserId(
+  userId: number,
+  cardId: number
+) {
+  return client.cards.findFirst({
+    where: { id: cardId, userId },
+  });
+}
 
 export async function findAllCards(userId: number) {
   return client.cards.findMany({

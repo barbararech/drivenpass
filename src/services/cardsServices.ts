@@ -36,15 +36,17 @@ export async function viewAllCards(userId: number) {
   return cards;
 }
 
-// export async function viewCardById(userId: number, cardId: number) {
-//   const card = await cardExist(userId, cardId);
+export async function viewCardById(userId: number, cardId: number) {
+  const card = await cardExist(userId, cardId);
 
-//   const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
-//   const encryptedPassword = cryptr.decrypt(card.password);
-//   card["password"] = encryptedPassword;
+  const decryptedPassword = decrypt(card.password);
+    const decryptedSecurityCode = decrypt(card.securityCode);
 
-//   return card;
-// }
+    card["password"] = decryptedPassword;
+    card["securityCode"] = decryptedSecurityCode;
+
+  return card;
+}
 
 // export async function deleteCard(userId: number, cardId: number) {
 //   await cardExist(userId, cardId);
@@ -70,18 +72,18 @@ export async function findCardByTitle(userId: number, card: INewCard) {
   return;
 }
 
-// export async function cardExist(userId: number, cardId: number) {
-//   const card = await cardsRepository.findCardByIdAndUserId(
-//     userId,
-//     cardId
-//   );
+export async function cardExist(userId: number, cardId: number) {
+  const card = await cardsRepository.findCardByIdAndUserId(
+    userId,
+    cardId
+  );
 
-//   if (!card) {
-//     throw {
-//       status: 404,
-//       message: "This card doesn't exist or doesn't belong to you!",
-//     };
-//   }
+  if (!card) {
+    throw {
+      status: 404,
+      message: "This card doesn't exist or doesn't belong to you!",
+    };
+  }
 
-//   return card;
-// }
+  return card;
+}

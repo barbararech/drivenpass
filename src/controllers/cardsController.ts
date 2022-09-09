@@ -19,17 +19,17 @@ export async function viewAllCards(req: Request, res: Response) {
   return res.status(200).send(cards);
 }
 
-// export async function viewCardById(req: Request, res: Response) {
-//   const userId: number = res.locals.id;
-//   const cardId: number = Number(req.params.id);
+export async function viewCardById(req: Request, res: Response) {
+  const userId: number = res.locals.id;
+  const cardId: number = Number(req.params.id);
 
-//   const card = await cardsService.viewCardById(
-//     userId,
-//     cardId
-//   );
+  const card = await cardsService.viewCardById(
+    userId,
+    cardId
+  );
 
-//   return res.status(200).send(card);
-// }
+  return res.status(200).send(card);
+}
 
 // export async function deleteCard(req: Request, res: Response) {
 //   const userId: number = res.locals.id;

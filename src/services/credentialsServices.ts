@@ -36,8 +36,8 @@ export async function viewAllCredentials(userId: number) {
 export async function viewCredentialById(userId: number, credentialId: number) {
   const credential = await credentialExist(userId, credentialId);
 
-  const encryptedPassword = decrypt(credential.password);
-  credential["password"] = encryptedPassword;
+  const decryptedPassword = decrypt(credential.password);
+  credential["password"] = decryptedPassword;
 
   return credential;
 }

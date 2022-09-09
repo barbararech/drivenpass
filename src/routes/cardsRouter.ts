@@ -19,11 +19,11 @@ router.get(
   cardsController.viewAllCards
 );
 
-// router.get(
-//   "/cards/:id",
-//   tokenValidationMiddleware,
-//   cardsController.viewCardById
-// );
+router.get(
+  "/cards/:id",
+  tokenValidationMiddleware,
+  cardsController.viewCardById
+);
 
 // router.delete(
 //   "/cards/:id",
