@@ -1,17 +1,16 @@
 import * as userService from "../services/userService";
 import * as credentialsRepository from "../repositories/credentialsRepository";
 import { INewCredential } from "../types/credentialTypes";
-import Cryptr from "cryptr";
+import { encrypt, decrypt } from "../utils/criptrUtils";
 
 export async function newCredential(
   userId: number,
   credential: INewCredential
 ) {
-  const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
-  const encryptedPassword = cryptr.encrypt(credential.password);
+  const encryptedPassword = encrypt(credential.password);
   credential["password"] = encryptedPassword;
 
-  const user = await userService.findUserById(userId);
+  await userService.findUserById(userId);
 
   await findCredentialByTitle(userId, credential);
 
@@ -25,11 +24,10 @@ export async function newCredential(
 
 export async function viewAllCredentials(userId: number) {
   const credentials = await credentialsRepository.findAllCredentials(userId);
-  const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
 
   credentials.map((credential) => {
-    const encryptedPassword = cryptr.decrypt(credential.password);
-    credential["password"] = encryptedPassword;
+    const decryptedPassword = decrypt(credential.password);
+    credential["password"] = decryptedPassword;
   });
 
   return credentials;
@@ -38,8 +36,7 @@ export async function viewAllCredentials(userId: number) {
 export async function viewCredentialById(userId: number, credentialId: number) {
   const credential = await credentialExist(userId, credentialId);
 
-  const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
-  const encryptedPassword = cryptr.decrypt(credential.password);
+  const encryptedPassword = decrypt(credential.password);
   credential["password"] = encryptedPassword;
 
   return credential;
@@ -51,7 +48,6 @@ export async function deleteCredential(userId: number, credentialId: number) {
 
   return;
 }
-
 
 export async function findCredentialByTitle(
   userId: number,

@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import * as credentialsService from "../services/credentialsServices";
-import * as CredentialTypes from "../types/credentialTypes";
+import { INewCredential } from "../types/credentialTypes";
 
 export async function newCredential(req: Request, res: Response) {
   const userId: number = res.locals.id;
-  const credential: CredentialTypes.INewCredential = req.body;
+  const credential: INewCredential = req.body;
 
   await credentialsService.newCredential(userId, credential);
 
@@ -35,10 +35,7 @@ export async function deleteCredential(req: Request, res: Response) {
   const userId: number = res.locals.id;
   const credentialId: number = Number(req.params.id);
 
-  await credentialsService.deleteCredential(
-    userId,
-    credentialId
-  );
+  await credentialsService.deleteCredential(userId, credentialId);
 
   return res.status(200).send("Credential successfully deleted!");
 }

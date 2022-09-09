@@ -2,12 +2,8 @@ import * as userService from "../services/userService";
 import * as safeNotesRepository from "../repositories/safeNotesRepository";
 import { INewSafeNote } from "../types/safeNoteTypes";
 
-export async function newSafeNote(
-  userId: number,
-  safeNote: INewSafeNote
-) {
-
-  const user = await userService.findUserById(userId);
+export async function newSafeNote(userId: number, safeNote: INewSafeNote) {
+  await userService.findUserById(userId);
 
   await findSafeNoteByTitle(userId, safeNote);
 
@@ -43,8 +39,10 @@ export async function findSafeNoteByTitle(
   safeNote: INewSafeNote
 ) {
   const { title } = safeNote;
-  const safeNoteExist =
-    await safeNotesRepository.findSafeNoteByTitleAndUserId(userId, title);
+  const safeNoteExist = await safeNotesRepository.findSafeNoteByTitleAndUserId(
+    userId,
+    title
+  );
 
   if (safeNoteExist) {
     throw {

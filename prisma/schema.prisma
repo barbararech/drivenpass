@@ -60,9 +60,9 @@ model Cards {
 }
 
 enum Type {
-  credit
-  debit
-  creditanddebit
+  creditCard
+  debitCard
+  creditAndDebitCard
 }
 
 model Networks {
