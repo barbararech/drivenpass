@@ -13,11 +13,11 @@ router.post(
   credentialsController.newCredential
 );
 
-// router.get(
-//   "/credentials",
-//   tokenValidationMiddleware,
-//   credentialsController.viewAllCredentials
-// );
+router.get(
+  "/credentials",
+  tokenValidationMiddleware,
+  credentialsController.viewAllCredentials
+);
 
 // router.get(
 //   "/credentials/:id",

@@ -12,3 +12,9 @@ export async function findCredentialByTitle(userId: number, title: string) {
     where: { userId, title },
   });
 }
+
+export async function findAllCredentials(userId: number) {
+  return client.credentials.findMany({
+    where: { userId },
+  });
+}
