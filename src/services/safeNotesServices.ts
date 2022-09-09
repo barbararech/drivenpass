@@ -26,33 +26,17 @@ export async function viewAllSafeNotes(userId: number) {
   return safeNotes;
 }
 
-// export async function viewSafeNoteById(userId: number, safeNoteId: number) {
-//   const safeNote = await safeNoteExist(userId, safeNoteId);
+export async function viewSafeNoteById(userId: number, safeNoteId: number) {
+  const safeNote = await safeNoteExist(userId, safeNoteId);
 
-//   return safeNote;
-// }
+  return safeNote;
+}
 
 // export async function deleteSafeNote(userId: number, safeNoteId: number) {
 //   await safeNoteExist(userId, safeNoteId);
 //   await safeNotesRepository.deleteSafeNote(safeNoteId);
 
 //   return;
-// }
-
-// export async function safeNoteExist(userId: number, safeNoteId: number) {
-//   const safeNote = await safeNotesRepository.findSafeNoteByIdAndUserId(
-//     userId,
-//     safeNoteId
-//   );
-
-//   if (!safeNote) {
-//     throw {
-//       status: 404,
-//       message: "This safe note doesn't exist or doesn't belong to you!",
-//     };
-//   }
-
-//   return safeNote;
 // }
 
 export async function findSafeNoteByTitle(
@@ -71,4 +55,20 @@ export async function findSafeNoteByTitle(
   }
 
   return;
+}
+
+export async function safeNoteExist(userId: number, safeNoteId: number) {
+  const safeNote = await safeNotesRepository.findSafeNoteByIdAndUserId(
+    userId,
+    safeNoteId
+  );
+
+  if (!safeNote) {
+    throw {
+      status: 404,
+      message: "This safe note doesn't exist or doesn't belong to you!",
+    };
+  }
+
+  return safeNote;
 }

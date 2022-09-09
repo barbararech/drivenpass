@@ -19,11 +19,11 @@ router.get(
   safeNotesController.viewAllSafeNotes
 );
 
-// router.get(
-//   "/safenotes/:id",
-//   tokenValidationMiddleware,
-//   safeNotesController.viewSafeNoteById
-// );
+router.get(
+  "/safenotes/:id",
+  tokenValidationMiddleware,
+  safeNotesController.viewSafeNoteById
+);
 
 // router.delete(
 //   "/safenotes/:id",

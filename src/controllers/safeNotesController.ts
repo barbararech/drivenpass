@@ -19,17 +19,17 @@ export async function viewAllSafeNotes(req: Request, res: Response) {
   return res.status(200).send(safeNotes);
 }
 
-// export async function viewSafeNoteById(req: Request, res: Response) {
-//   const userId: number = res.locals.id;
-//   const safeNoteId: number = Number(req.params.id);
+export async function viewSafeNoteById(req: Request, res: Response) {
+  const userId: number = res.locals.id;
+  const safeNoteId: number = Number(req.params.id);
 
-//   const safeNote = await safeNotesService.viewSafeNoteById(
-//     userId,
-//     safeNoteId
-//   );
+  const safeNote = await safeNotesService.viewSafeNoteById(
+    userId,
+    safeNoteId
+  );
 
-//   return res.status(200).send(safeNote);
-// }
+  return res.status(200).send(safeNote);
+}
 
 // export async function deleteSafeNote(req: Request, res: Response) {
 //   const userId: number = res.locals.id;

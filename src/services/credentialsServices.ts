@@ -52,21 +52,6 @@ export async function deleteCredential(userId: number, credentialId: number) {
   return;
 }
 
-export async function credentialExist(userId: number, credentialId: number) {
-  const credential = await credentialsRepository.findCredentialByIdAndUserId(
-    userId,
-    credentialId
-  );
-
-  if (!credential) {
-    throw {
-      status: 404,
-      message: "This credential doesn't exist or doesn't belong to you!",
-    };
-  }
-
-  return credential;
-}
 
 export async function findCredentialByTitle(
   userId: number,
@@ -84,4 +69,20 @@ export async function findCredentialByTitle(
   }
 
   return;
+}
+
+export async function credentialExist(userId: number, credentialId: number) {
+  const credential = await credentialsRepository.findCredentialByIdAndUserId(
+    userId,
+    credentialId
+  );
+
+  if (!credential) {
+    throw {
+      status: 404,
+      message: "This credential doesn't exist or doesn't belong to you!",
+    };
+  }
+
+  return credential;
 }

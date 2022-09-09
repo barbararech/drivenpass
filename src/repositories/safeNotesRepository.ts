@@ -16,14 +16,14 @@ export async function findSafeNoteByTitleAndUserId(
   });
 }
 
-// export async function findSafeNoteByIdAndUserId(
-//   userId: number,
-//   safeNoteId: number
-// ) {
-//   return client.safeNotes.findFirst({
-//     where: { id: safeNoteId, userId },
-//   });
-// }
+export async function findSafeNoteByIdAndUserId(
+  userId: number,
+  safeNoteId: number
+) {
+  return client.safeNotes.findFirst({
+    where: { id: safeNoteId, userId },
+  });
+}
 
 export async function findAllSafeNotes(userId: number) {
   return client.safeNotes.findMany({
