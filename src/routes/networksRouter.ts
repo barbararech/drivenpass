@@ -19,11 +19,11 @@ router.get(
   networksController.viewAllNetworks
 );
 
-// router.get(
-//   "/networks/:id",
-//   tokenValidationMiddleware,
-//   networksController.viewNetworkById
-// );
+router.get(
+  "/networks/:id",
+  tokenValidationMiddleware,
+  networksController.viewNetworkById
+);
 
 // router.delete(
 //   "/networks/:id",

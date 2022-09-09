@@ -31,15 +31,15 @@ export async function viewAllNetworks(userId: number) {
   return networks;
 }
 
-// export async function viewNetworkById(userId: number, networkId: number) {
-//   const network = await networkExist(userId, networkId);
+export async function viewNetworkById(userId: number, networkId: number) {
+  const network = await networkExist(userId, networkId);
 
-//   const decryptedPassword = decrypt(network.password);
+  const decryptedPassword = decrypt(network.password);
 
-//   network["password"] = decryptedPassword;
+  network["password"] = decryptedPassword;
 
-//   return network;
-// }
+  return network;
+}
 
 // export async function deleteNetwork(userId: number, networkId: number) {
 //   await networkExist(userId, networkId);
@@ -65,18 +65,18 @@ export async function findNetworkByTitle(userId: number, network: INewNetwork) {
   return;
 }
 
-// export async function networkExist(userId: number, networkId: number) {
-//   const network = await networksRepository.findNetworkByIdAndUserId(
-//     userId,
-//     networkId
-//   );
+export async function networkExist(userId: number, networkId: number) {
+  const network = await networksRepository.findNetworkByIdAndUserId(
+    userId,
+    networkId
+  );
 
-//   if (!network) {
-//     throw {
-//       status: 404,
-//       message: "This network doesn't exist or doesn't belong to you!",
-//     };
-//   }
+  if (!network) {
+    throw {
+      status: 404,
+      message: "This network doesn't exist or doesn't belong to you!",
+    };
+  }
 
-//   return network;
-// }
+  return network;
+}

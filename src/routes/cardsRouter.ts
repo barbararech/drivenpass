@@ -13,11 +13,7 @@ router.post(
   cardsController.newCard
 );
 
-router.get(
-  "/cards",
-  tokenValidationMiddleware,
-  cardsController.viewAllCards
-);
+router.get("/cards", tokenValidationMiddleware, cardsController.viewAllCards);
 
 router.get(
   "/cards/:id",

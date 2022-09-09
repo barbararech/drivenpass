@@ -7,17 +7,23 @@ export async function insertNewNetwork(network: INewNetwork) {
   });
 }
 
-export async function findNetworkByTitleAndUserId(userId: number, title: string) {
+export async function findNetworkByTitleAndUserId(
+  userId: number,
+  title: string
+) {
   return client.networks.findFirst({
     where: { userId, title },
   });
 }
 
-// export async function findNetworkByIdAndUserId(userId: number, networkId: number) {
-//   return client.networks.findFirst({
-//     where: { id: networkId, userId },
-//   });
-// }
+export async function findNetworkByIdAndUserId(
+  userId: number,
+  networkId: number
+) {
+  return client.networks.findFirst({
+    where: { id: networkId, userId },
+  });
+}
 
 export async function findAllNetworks(userId: number) {
   return client.networks.findMany({

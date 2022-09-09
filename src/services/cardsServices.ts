@@ -40,10 +40,10 @@ export async function viewCardById(userId: number, cardId: number) {
   const card = await cardExist(userId, cardId);
 
   const decryptedPassword = decrypt(card.password);
-    const decryptedSecurityCode = decrypt(card.securityCode);
+  const decryptedSecurityCode = decrypt(card.securityCode);
 
-    card["password"] = decryptedPassword;
-    card["securityCode"] = decryptedSecurityCode;
+  card["password"] = decryptedPassword;
+  card["securityCode"] = decryptedSecurityCode;
 
   return card;
 }
@@ -73,10 +73,7 @@ export async function findCardByTitle(userId: number, card: INewCard) {
 }
 
 export async function cardExist(userId: number, cardId: number) {
-  const card = await cardsRepository.findCardByIdAndUserId(
-    userId,
-    cardId
-  );
+  const card = await cardsRepository.findCardByIdAndUserId(userId, cardId);
 
   if (!card) {
     throw {
