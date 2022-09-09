@@ -11,13 +11,13 @@ export async function newSafeNote(req: Request, res: Response) {
   return res.status(200).send("Safe note created successfully!");
 }
 
-// export async function viewAllSafeNotes(req: Request, res: Response) {
-//   const userId: number = res.locals.id;
+export async function viewAllSafeNotes(req: Request, res: Response) {
+  const userId: number = res.locals.id;
 
-//   const safeNotes = await safeNotesService.viewAllSafeNotes(userId);
+  const safeNotes = await safeNotesService.viewAllSafeNotes(userId);
 
-//   return res.status(200).send(safeNotes);
-// }
+  return res.status(200).send(safeNotes);
+}
 
 // export async function viewSafeNoteById(req: Request, res: Response) {
 //   const userId: number = res.locals.id;

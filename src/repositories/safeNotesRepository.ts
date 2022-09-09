@@ -25,11 +25,11 @@ export async function findSafeNoteByTitleAndUserId(
 //   });
 // }
 
-// export async function findAllSafeNotes(userId: number) {
-//   return client.safeNotes.findMany({
-//     where: { userId },
-//   });
-// }
+export async function findAllSafeNotes(userId: number) {
+  return client.safeNotes.findMany({
+    where: { userId },
+  });
+}
 
 // export async function deleteSafeNote(id: number) {
 //   return client.safeNotes.delete({

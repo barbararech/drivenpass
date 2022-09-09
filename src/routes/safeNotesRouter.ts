@@ -7,26 +7,26 @@ import { newSafeNoteSchema } from "../schemas/safeNotesSchema";
 const router = Router();
 
 router.post(
-  "/safeNotes",
+  "/safenotes",
   tokenValidationMiddleware,
   middleware(newSafeNoteSchema),
   safeNotesController.newSafeNote
 );
 
-// router.get(
-//   "/safeNotes",
-//   tokenValidationMiddleware,
-//   safeNotesController.viewAllSafeNotes
-// );
+router.get(
+  "/safenotes",
+  tokenValidationMiddleware,
+  safeNotesController.viewAllSafeNotes
+);
 
 // router.get(
-//   "/safeNotes/:id",
+//   "/safenotes/:id",
 //   tokenValidationMiddleware,
 //   safeNotesController.viewSafeNoteById
 // );
 
 // router.delete(
-//   "/safeNotes/:id",
+//   "/safenotes/:id",
 //   tokenValidationMiddleware,
 //   safeNotesController.deleteSafeNote
 // );

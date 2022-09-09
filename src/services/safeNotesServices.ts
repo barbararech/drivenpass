@@ -20,11 +20,11 @@ export async function newSafeNote(
   return;
 }
 
-// export async function viewAllSafeNotes(userId: number) {
-//   const safeNotes = await safeNotesRepository.findAllSafeNotes(userId);
+export async function viewAllSafeNotes(userId: number) {
+  const safeNotes = await safeNotesRepository.findAllSafeNotes(userId);
 
-//   return safeNotes;
-// }
+  return safeNotes;
+}
 
 // export async function viewSafeNoteById(userId: number, safeNoteId: number) {
 //   const safeNote = await safeNoteExist(userId, safeNoteId);
