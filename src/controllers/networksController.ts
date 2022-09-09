@@ -8,7 +8,7 @@ export async function newNetwork(req: Request, res: Response) {
 
   await networksService.newNetwork(userId, network);
 
-  return res.status(200).send("network created successfully!");
+  return res.status(200).send("Network created successfully!");
 }
 
 export async function viewAllNetworks(req: Request, res: Response) {
@@ -28,14 +28,11 @@ export async function viewNetworkById(req: Request, res: Response) {
   return res.status(200).send(network);
 }
 
-// export async function deleteNetwork(req: Request, res: Response) {
-//   const userId: number = res.locals.id;
-//   const networkId: number = Number(req.params.id);
+export async function deleteNetwork(req: Request, res: Response) {
+  const userId: number = res.locals.id;
+  const networkId: number = Number(req.params.id);
 
-//   await networksService.deleteNetwork(
-//     userId,
-//     networkId
-//   );
+  await networksService.deleteNetwork(userId, networkId);
 
-//   return res.status(200).send("network successfully deleted!");
-// }
+  return res.status(200).send("Network successfully deleted!");
+}

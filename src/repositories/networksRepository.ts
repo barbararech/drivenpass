@@ -31,8 +31,8 @@ export async function findAllNetworks(userId: number) {
   });
 }
 
-// export async function deleteNetwork(id: number) {
-//   return client.networks.delete({
-//     where: { id },
-//   });
-// }
+export async function deleteNetwork(id: number) {
+  return client.networks.delete({
+    where: { id },
+  });
+}

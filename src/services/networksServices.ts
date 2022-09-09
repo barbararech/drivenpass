@@ -41,12 +41,12 @@ export async function viewNetworkById(userId: number, networkId: number) {
   return network;
 }
 
-// export async function deleteNetwork(userId: number, networkId: number) {
-//   await networkExist(userId, networkId);
-//   await networksRepository.deleteNetwork(networkId);
+export async function deleteNetwork(userId: number, networkId: number) {
+  await networkExist(userId, networkId);
+  await networksRepository.deleteNetwork(networkId);
 
-//   return;
-// }
+  return;
+}
 
 export async function findNetworkByTitle(userId: number, network: INewNetwork) {
   const { title } = network;

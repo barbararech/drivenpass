@@ -25,10 +25,10 @@ router.get(
   networksController.viewNetworkById
 );
 
-// router.delete(
-//   "/networks/:id",
-//   tokenValidationMiddleware,
-//   networksController.deleteNetwork
-// );
+router.delete(
+  "/networks/:id",
+  tokenValidationMiddleware,
+  networksController.deleteNetwork
+);
 
 export default router;
