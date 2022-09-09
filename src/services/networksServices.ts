@@ -19,17 +19,17 @@ export async function newNetwork(userId: number, network: INewNetwork) {
   return;
 }
 
-// export async function viewAllNetworks(userId: number) {
-//   const networks = await networksRepository.findAllNetworks(userId);
+export async function viewAllNetworks(userId: number) {
+  const networks = await networksRepository.findAllNetworks(userId);
 
-//   networks.map((network) => {
-//     const decryptedPassword = decrypt(network.password);
+  networks.map((network) => {
+    const decryptedPassword = decrypt(network.password);
 
-//     network["password"] = decryptedPassword;
-//   });
+    network["password"] = decryptedPassword;
+  });
 
-//   return networks;
-// }
+  return networks;
+}
 
 // export async function viewNetworkById(userId: number, networkId: number) {
 //   const network = await networkExist(userId, networkId);

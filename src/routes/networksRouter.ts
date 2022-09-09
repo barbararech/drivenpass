@@ -13,11 +13,11 @@ router.post(
   networksController.newNetwork
 );
 
-// router.get(
-//   "/networks",
-//   tokenValidationMiddleware,
-//   networksController.viewAllNetworks
-// );
+router.get(
+  "/networks",
+  tokenValidationMiddleware,
+  networksController.viewAllNetworks
+);
 
 // router.get(
 //   "/networks/:id",

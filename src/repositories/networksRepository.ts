@@ -19,11 +19,11 @@ export async function findNetworkByTitleAndUserId(userId: number, title: string)
 //   });
 // }
 
-// export async function findAllNetworks(userId: number) {
-//   return client.networks.findMany({
-//     where: { userId },
-//   });
-// }
+export async function findAllNetworks(userId: number) {
+  return client.networks.findMany({
+    where: { userId },
+  });
+}
 
 // export async function deleteNetwork(id: number) {
 //   return client.networks.delete({

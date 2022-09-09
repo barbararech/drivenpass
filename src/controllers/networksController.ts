@@ -11,13 +11,13 @@ export async function newNetwork(req: Request, res: Response) {
   return res.status(200).send("network created successfully!");
 }
 
-// export async function viewAllNetworks(req: Request, res: Response) {
-//   const userId: number = res.locals.id;
+export async function viewAllNetworks(req: Request, res: Response) {
+  const userId: number = res.locals.id;
 
-//   const networks = await networksService.viewAllNetworks(userId);
+  const networks = await networksService.viewAllNetworks(userId);
 
-//   return res.status(200).send(networks);
-// }
+  return res.status(200).send(networks);
+}
 
 // export async function viewNetworkById(req: Request, res: Response) {
 //   const userId: number = res.locals.id;
