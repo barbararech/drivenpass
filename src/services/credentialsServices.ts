@@ -27,17 +27,16 @@ export async function viewAllCredentials(userId: number) {
   const credentials = await credentialsRepository.findAllCredentials(userId);
   const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
 
-  credentials.map(credential =>{
+  credentials.map((credential) => {
     const encryptedPassword = cryptr.decrypt(credential.password);
     credential["password"] = encryptedPassword;
-  })
- 
+  });
+
   return credentials;
 }
 
 export async function viewCredentialById(userId: number, credentialId: number) {
-  const credential = await credentialExist(credentialId);
-  await credentialBelongsToUser(credentialId, userId);
+  const credential = await credentialExist(userId, credentialId);
 
   const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
   const encryptedPassword = cryptr.decrypt(credential.password);
@@ -46,37 +45,27 @@ export async function viewCredentialById(userId: number, credentialId: number) {
   return credential;
 }
 
-export async function credentialExist(credentialId: number) {
-  const credential = await credentialsRepository.findCredentialById(
+export async function deleteCredential(userId: number, credentialId: number) {
+  await credentialExist(userId, credentialId);
+  await credentialsRepository.deleteCredential(credentialId);
+
+  return;
+}
+
+export async function credentialExist(userId: number, credentialId: number) {
+  const credential = await credentialsRepository.findCredentialByIdAndUserId(
+    userId,
     credentialId
   );
 
   if (!credential) {
     throw {
       status: 404,
-      message: "This credential doesn't exist!",
+      message: "This credential doesn't exist or doesn't belong to you!",
     };
   }
 
   return credential;
-}
-
-export async function credentialBelongsToUser(
-  credentialId: number,
-  userId: number
-) {
-  const credential = await credentialsRepository.findCredentialById(
-    credentialId
-  );
-
-  if (credential?.userId !== userId) {
-    throw {
-      status: 404,
-      message: "Unhautorized!",
-    };
-  }
-
-  return;
 }
 
 export async function findCredentialByTitle(

@@ -25,10 +25,10 @@ router.get(
   credentialsController.viewCredentialById
 );
 
-// router.delete(
-//   "/credentials:id",
-//   tokenValidationMiddleware,
-//   credentialsController.deleteCredential
-// );
+router.delete(
+  "/credentials/:id",
+  tokenValidationMiddleware,
+  credentialsController.deleteCredential
+);
 
 export default router;

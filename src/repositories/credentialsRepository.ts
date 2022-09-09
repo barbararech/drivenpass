@@ -16,12 +16,6 @@ export async function findCredentialByTitleAndUserId(
   });
 }
 
-export async function findCredentialById(credentialId: number) {
-  return client.credentials.findFirst({
-    where: { id: credentialId },
-  });
-}
-
 export async function findCredentialByIdAndUserId(
   userId: number,
   credentialId: number
@@ -34,5 +28,11 @@ export async function findCredentialByIdAndUserId(
 export async function findAllCredentials(userId: number) {
   return client.credentials.findMany({
     where: { userId },
+  });
+}
+
+export async function deleteCredential(id: number) {
+  return client.credentials.delete({
+    where: { id },
   });
 }
