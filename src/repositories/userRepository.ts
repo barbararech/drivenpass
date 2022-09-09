@@ -1,5 +1,5 @@
 import client from "../dbStrategy/database";
-import { INewUser } from "../types/UserTypes";
+import { INewUser } from "../types/userTypes";
 
 export async function findUserByEmail(email: string) {
   return client.users.findFirst({

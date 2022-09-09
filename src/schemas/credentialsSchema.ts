@@ -1,5 +1,5 @@
 import joi from "joi";
-import { INewCredential } from "../types/CredentialTypes";
+import { INewCredential } from "../types/credentialTypes";
 
 export const newCredentialSchema = joi.object<INewCredential>({
   url: joi.string().uri().required(),

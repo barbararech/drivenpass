@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
-import * as AuthTypes from "../types/AuthTypes";
+import * as AuthTypes from "../types/authTypes";
 
 export async function tokenValidationMiddleware(
   req: Request,

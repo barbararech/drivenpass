@@ -1,5 +1,5 @@
 import * as userRepository from "../repositories/userRepository";
-import { INewUser } from "../types/UserTypes";
+import { INewUser } from "../types/userTypes";
 
 export async function insertNewUser(user: INewUser) {
   await userRepository.insertNewUser(user);

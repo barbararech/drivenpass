@@ -1,6 +1,6 @@
 import * as userService from "../services/userService";
 import * as credentialsRepository from "../repositories/credentialsRepository";
-import { INewCredential } from "../types/CredentialTypes";
+import { INewCredential } from "../types/credentialTypes";
 import Cryptr from "cryptr";
 
 export async function newCredential(

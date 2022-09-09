@@ -6,6 +6,7 @@ import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware";
 
 import authRouter from "./routes/authRouter";
 import credentialsRouter from "./routes/credentialsRouter";
+import safeNotesRouter from "./routes/safeNotesRouter";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(json());
 
 app.use(authRouter);
 app.use(credentialsRouter);
+app.use(safeNotesRouter);
 
 app.use(errorHandlerMiddleware);
 

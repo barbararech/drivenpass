@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import * as credentialsService from "../services/credentialsServices";
-import * as CredentialTypes from "../types/CredentialTypes";
+import * as CredentialTypes from "../types/credentialTypes";
 
 export async function newCredential(req: Request, res: Response) {
   const userId: number = res.locals.id;
@@ -40,5 +40,5 @@ export async function deleteCredential(req: Request, res: Response) {
     credentialId
   );
 
-  return res.status(200).send("Credential successfully deleted");
+  return res.status(200).send("Credential successfully deleted!");
 }

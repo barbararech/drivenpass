@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import * as ErrorTypes from "../types/ErrorTypes";
+import * as ErrorTypes from "../types/errorTypes";
 
 export default async function errorHandler(
   error: ErrorTypes.Error,

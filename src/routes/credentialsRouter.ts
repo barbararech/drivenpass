@@ -2,14 +2,14 @@ import { Router } from "express";
 import { middleware } from "../middlewares/schemasValidationMiddleware";
 import { tokenValidationMiddleware } from "../middlewares/authValidationMiddleware";
 import * as credentialsController from "../controllers/credentialsController";
-import * as credentialsSchemas from "../schemas/credentialsSchema";
+import { newCredentialSchema } from "../schemas/credentialsSchema";
 
 const router = Router();
 
 router.post(
   "/credentials",
   tokenValidationMiddleware,
-  middleware(credentialsSchemas.newCredentialSchema),
+  middleware(newCredentialSchema),
   credentialsController.newCredential
 );
 
