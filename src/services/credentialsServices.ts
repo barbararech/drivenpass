@@ -5,17 +5,13 @@ import Cryptr from "cryptr";
 
 export async function newCredential(
   id: number,
-  credential: CredentialTypes.NewCredential
+  credential: CredentialTypes.INewCredential
 ) {
   const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
   const encryptedPassword = cryptr.encrypt(credential.password);
   credential["password"] = encryptedPassword;
 
   const user = await userService.findUserById(id);
-
-  if (!user) {
-    throw { status: 404, message: "This user isn't registered!" };
-  }
 
   await findCredentialByTitle(id, credential);
 
@@ -29,7 +25,7 @@ export async function newCredential(
 
 export async function findCredentialByTitle(
   id: number,
-  credential: CredentialTypes.NewCredential
+  credential: CredentialTypes.INewCredential
 ) {
   const { title } = credential;
   const credentialExist = await credentialsRepository.findCredentialByTitle(
