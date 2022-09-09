@@ -1,5 +1,5 @@
 import client from "../dbStrategy/database";
-import * as UserTypes from "../types/UserTypes";
+import { INewUser } from "../types/UserTypes";
 
 export async function findUserByEmail(email: string) {
   return client.users.findFirst({
@@ -13,7 +13,7 @@ export async function findUserById(id: number) {
   });
 }
 
-export async function insertNewUser(user: UserTypes.NewUser) {
+export async function insertNewUser(user: INewUser) {
   return client.users.create({
     data: user,
   });

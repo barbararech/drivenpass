@@ -1,9 +1,7 @@
 import client from "../dbStrategy/database";
-import * as CredentialTypes from "../types/CredentialTypes";
+import { INewCredential } from "../types/CredentialTypes";
 
-export async function insertNewCredential(
-  credential: CredentialTypes.NewCredential
-) {
+export async function insertNewCredential(credential: INewCredential) {
   return client.credentials.create({
     data: credential,
   });

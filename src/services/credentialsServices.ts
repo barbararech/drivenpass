@@ -1,12 +1,9 @@
 import * as userService from "../services/userService";
 import * as credentialsRepository from "../repositories/credentialsRepository";
-import * as CredentialTypes from "../types/CredentialTypes";
+import { INewCredential } from "../types/CredentialTypes";
 import Cryptr from "cryptr";
 
-export async function newCredential(
-  id: number,
-  credential: CredentialTypes.INewCredential
-) {
+export async function newCredential(id: number, credential: INewCredential) {
   const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
   const encryptedPassword = cryptr.encrypt(credential.password);
   credential["password"] = encryptedPassword;
@@ -25,7 +22,7 @@ export async function newCredential(
 
 export async function findCredentialByTitle(
   id: number,
-  credential: CredentialTypes.INewCredential
+  credential: INewCredential
 ) {
   const { title } = credential;
   const credentialExist = await credentialsRepository.findCredentialByTitle(

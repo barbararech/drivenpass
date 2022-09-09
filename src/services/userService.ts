@@ -1,7 +1,7 @@
 import * as userRepository from "../repositories/userRepository";
-import * as UserTypes from "../types/UserTypes";
+import { INewUser } from "../types/UserTypes";
 
-export async function insertNewUser(user: UserTypes.INewUser) {
+export async function insertNewUser(user: INewUser) {
   await userRepository.insertNewUser(user);
 
   return;
