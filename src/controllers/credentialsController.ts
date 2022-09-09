@@ -18,3 +18,15 @@ export async function viewAllCredentials(req: Request, res: Response) {
 
   return res.status(200).send(credentials);
 }
+
+export async function viewCredentialById(req: Request, res: Response) {
+  const userId: number = res.locals.id;
+  const credentialId: number = Number(req.params.id);
+
+  const credential = await credentialsService.viewCredentialById(
+    userId,
+    credentialId
+  );
+
+  return res.status(200).send(credential);
+}

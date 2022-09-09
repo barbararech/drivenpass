@@ -19,11 +19,11 @@ router.get(
   credentialsController.viewAllCredentials
 );
 
-// router.get(
-//   "/credentials/:id",
-//   tokenValidationMiddleware,
-//   credentialsController.viewCredential
-// );
+router.get(
+  "/credentials/:id",
+  tokenValidationMiddleware,
+  credentialsController.viewCredentialById
+);
 
 // router.delete(
 //   "/credentials:id",

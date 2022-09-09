@@ -25,7 +25,58 @@ export async function newCredential(
 
 export async function viewAllCredentials(userId: number) {
   const credentials = await credentialsRepository.findAllCredentials(userId);
+  const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
+
+  credentials.map(credential =>{
+    const encryptedPassword = cryptr.decrypt(credential.password);
+    credential["password"] = encryptedPassword;
+  })
+ 
   return credentials;
+}
+
+export async function viewCredentialById(userId: number, credentialId: number) {
+  const credential = await credentialExist(credentialId);
+  await credentialBelongsToUser(credentialId, userId);
+
+  const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
+  const encryptedPassword = cryptr.decrypt(credential.password);
+  credential["password"] = encryptedPassword;
+
+  return credential;
+}
+
+export async function credentialExist(credentialId: number) {
+  const credential = await credentialsRepository.findCredentialById(
+    credentialId
+  );
+
+  if (!credential) {
+    throw {
+      status: 404,
+      message: "This credential doesn't exist!",
+    };
+  }
+
+  return credential;
+}
+
+export async function credentialBelongsToUser(
+  credentialId: number,
+  userId: number
+) {
+  const credential = await credentialsRepository.findCredentialById(
+    credentialId
+  );
+
+  if (credential?.userId !== userId) {
+    throw {
+      status: 404,
+      message: "Unhautorized!",
+    };
+  }
+
+  return;
 }
 
 export async function findCredentialByTitle(
@@ -33,10 +84,8 @@ export async function findCredentialByTitle(
   credential: INewCredential
 ) {
   const { title } = credential;
-  const credentialExist = await credentialsRepository.findCredentialByTitle(
-    userId,
-    title
-  );
+  const credentialExist =
+    await credentialsRepository.findCredentialByTitleAndUserId(userId, title);
 
   if (credentialExist) {
     throw {

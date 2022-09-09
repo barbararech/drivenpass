@@ -7,9 +7,27 @@ export async function insertNewCredential(credential: INewCredential) {
   });
 }
 
-export async function findCredentialByTitle(userId: number, title: string) {
+export async function findCredentialByTitleAndUserId(
+  userId: number,
+  title: string
+) {
   return client.credentials.findFirst({
     where: { userId, title },
+  });
+}
+
+export async function findCredentialById(credentialId: number) {
+  return client.credentials.findFirst({
+    where: { id: credentialId },
+  });
+}
+
+export async function findCredentialByIdAndUserId(
+  userId: number,
+  credentialId: number
+) {
+  return client.credentials.findFirst({
+    where: { id: credentialId, userId },
   });
 }
 
