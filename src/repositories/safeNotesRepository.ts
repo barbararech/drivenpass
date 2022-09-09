@@ -31,8 +31,8 @@ export async function findAllSafeNotes(userId: number) {
   });
 }
 
-// export async function deleteSafeNote(id: number) {
-//   return client.safeNotes.delete({
-//     where: { id },
-//   });
-// }
+export async function deleteSafeNote(id: number) {
+  return client.safeNotes.delete({
+    where: { id },
+  });
+}

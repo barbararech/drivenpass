@@ -25,10 +25,10 @@ router.get(
   safeNotesController.viewSafeNoteById
 );
 
-// router.delete(
-//   "/safenotes/:id",
-//   tokenValidationMiddleware,
-//   safeNotesController.deleteSafeNote
-// );
+router.delete(
+  "/safenotes/:id",
+  tokenValidationMiddleware,
+  safeNotesController.deleteSafeNote
+);
 
 export default router;

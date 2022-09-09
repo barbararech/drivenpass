@@ -1,7 +1,6 @@
 import * as userService from "../services/userService";
 import * as safeNotesRepository from "../repositories/safeNotesRepository";
 import { INewSafeNote } from "../types/safeNoteTypes";
-import Cryptr from "cryptr";
 
 export async function newSafeNote(
   userId: number,
@@ -32,12 +31,12 @@ export async function viewSafeNoteById(userId: number, safeNoteId: number) {
   return safeNote;
 }
 
-// export async function deleteSafeNote(userId: number, safeNoteId: number) {
-//   await safeNoteExist(userId, safeNoteId);
-//   await safeNotesRepository.deleteSafeNote(safeNoteId);
+export async function deleteSafeNote(userId: number, safeNoteId: number) {
+  await safeNoteExist(userId, safeNoteId);
+  await safeNotesRepository.deleteSafeNote(safeNoteId);
 
-//   return;
-// }
+  return;
+}
 
 export async function findSafeNoteByTitle(
   userId: number,
