@@ -7,7 +7,7 @@ export async function newCard(userId: number, card: INewCard) {
   const encryptedPassword = encrypt(card.password);
   card["password"] = encryptedPassword;
 
-  const encryptedSecurityCode = encrypt(card.password);
+  const encryptedSecurityCode = encrypt(card.securityCode);
   card["securityCode"] = encryptedSecurityCode;
 
   await userService.findUserById(userId);
@@ -22,17 +22,19 @@ export async function newCard(userId: number, card: INewCard) {
   return;
 }
 
-// export async function viewAllCards(userId: number) {
-//   const cards = await cardsRepository.findAllCards(userId);
-//   const cryptr = new Cryptr(process.env.CRYPTR_SECRET as string);
+export async function viewAllCards(userId: number) {
+  const cards = await cardsRepository.findAllCards(userId);
 
-//   cards.map((card) => {
-//     const encryptedPassword = cryptr.decrypt(card.password);
-//     card["password"] = encryptedPassword;
-//   });
+  cards.map((card) => {
+    const decryptedPassword = decrypt(card.password);
+    const decryptedSecurityCode = decrypt(card.securityCode);
 
-//   return cards;
-// }
+    card["password"] = decryptedPassword;
+    card["securityCode"] = decryptedSecurityCode;
+  });
+
+  return cards;
+}
 
 // export async function viewCardById(userId: number, cardId: number) {
 //   const card = await cardExist(userId, cardId);

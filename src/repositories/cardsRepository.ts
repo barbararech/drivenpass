@@ -7,10 +7,7 @@ export async function insertNewCard(card: INewCard) {
   });
 }
 
-export async function findCardByTitleAndUserId(
-  userId: number,
-  title: string
-) {
+export async function findCardByTitleAndUserId(userId: number, title: string) {
   return client.cards.findFirst({
     where: { userId, title },
   });
@@ -25,11 +22,11 @@ export async function findCardByTitleAndUserId(
 //   });
 // }
 
-// export async function findAllCards(userId: number) {
-//   return client.cards.findMany({
-//     where: { userId },
-//   });
-// }
+export async function findAllCards(userId: number) {
+  return client.cards.findMany({
+    where: { userId },
+  });
+}
 
 // export async function deleteCard(id: number) {
 //   return client.cards.delete({

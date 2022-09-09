@@ -11,13 +11,13 @@ export async function newCard(req: Request, res: Response) {
   return res.status(200).send("Card created successfully!");
 }
 
-// export async function viewAllCards(req: Request, res: Response) {
-//   const userId: number = res.locals.id;
+export async function viewAllCards(req: Request, res: Response) {
+  const userId: number = res.locals.id;
 
-//   const cards = await cardsService.viewAllCards(userId);
+  const cards = await cardsService.viewAllCards(userId);
 
-//   return res.status(200).send(cards);
-// }
+  return res.status(200).send(cards);
+}
 
 // export async function viewCardById(req: Request, res: Response) {
 //   const userId: number = res.locals.id;
